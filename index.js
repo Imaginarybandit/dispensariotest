@@ -118,18 +118,6 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.json());
 
-app.get("/async", async (req, res) => {
-	try {
-		const response = await axios({
-			url: "https://swapi.dev/api/people/1/",
-			method: "get",
-		});
-		res.status(200).json(response.data);
-	} catch (err) {
-		res.status(500).json({ message: err });
-	}
-});
-
 app.use('/', userRoutes);
 app.use('/carrito',carritoRoutes)
 app.use('/menu', menuRoutes);
